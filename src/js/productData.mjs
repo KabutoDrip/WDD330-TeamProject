@@ -13,7 +13,6 @@ export function getData(category = "tents") {
 }
 // I believe this is where the promise error is taking place
 
-
 export async function findProductById(id) {
   const products = await getData();
   return products.find((item) => item.Id === id);
