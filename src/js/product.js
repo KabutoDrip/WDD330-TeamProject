@@ -1,5 +1,5 @@
 import { getParam } from './utils.mjs';
-import { productDetails, addProductToCart } from './productDetails.mjs';
+import { productDetails, addProductToCart, removeProductFromCart } from './productDetails.mjs';
 import { findProductById } from './productData.mjs';
 
 const productId = getParam('product');
@@ -11,7 +11,9 @@ async function addToCartHandler(e) {
   addProductToCart(product);
 }
 
+
 // add listener to Add to Cart button
 document
   .getElementById('addToCart')
   .addEventListener('click', addToCartHandler);
+
