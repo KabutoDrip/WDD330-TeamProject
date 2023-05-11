@@ -115,6 +115,7 @@ button {
 
 .cart svg {
   width: 25px;
+  height: 75px;
 }
 .cart:hover svg {
   fill: gray;
@@ -229,4 +230,13 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+.superscript {
+  font-size: 70px;
+  z-index: 3;
+}
+
+.superscript_circle {
+  fill: #e5aa72;
 }
