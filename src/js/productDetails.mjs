@@ -19,9 +19,19 @@ export async function productDetails(productID, selector) {
 export function addProductToCart(product) {
     setLocalStorage('so-cart', product);
 }
-export function removeProductFromCart(product){
-    console.log(localStorage.getItem('so-cart'));
-    console.log(product);
+export function removeProductFromCart(productID){
+    var ls = getLocalStorage('so-cart');
+    console.log(ls[0].Id);
+    for (var i = 0; i < ls.length; i++) { 
+        //console.log(ls[i]);  
+
+        if (ls[i].Id == productID);
+        var newv = ls.splice(i,1);
+        console.log(newv);
+        break;
+    }
+    
+    //setLocalStorage('so-cart', new);
 }
 
 export function productDetailsTemplate(product) {

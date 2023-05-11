@@ -1,5 +1,5 @@
 import { getParam } from './utils.mjs';
-import { productDetails, addProductToCart, removeProductFromCart } from './productDetails.mjs';
+import { productDetails, addProductToCart, } from './productDetails.mjs';
 import { findProductById } from './productData.mjs';
 
 const productId = getParam('product');
