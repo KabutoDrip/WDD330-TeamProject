@@ -18,6 +18,9 @@ export async function productDetails(productID, selector) {
 }
 export function addProductToCart(product) {
     setLocalStorage('so-cart', product);
+    document.querySelector('.cart').classList.add('wiggle');
+    
+    document.querySelector('.cart').addEventListener('animationend', (e) => {e.target.classList.remove('wiggle')});
 }
 export function productDetailsTemplate(product) {
     return `${product.Name}`;
