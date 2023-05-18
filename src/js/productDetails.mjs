@@ -24,10 +24,10 @@ export function removeProductFromCart(e){
     const productID = e.target.id;
     var ls = getLocalStorage('so-cart');
     for (var i = 0; i < ls.length; i++) { 
-        console.log(ls[i].Id);  
+        //console.log(ls[i].Id);  
         if (ls[i].Id == productID){
             ls.splice(i - scount,1);
-            scount = scount++;
+            scount = scount++; //count that fixes a bug and only goes up when it hits something
             setListToLocalStorage('so-cart', ls);
             window.location.reload();        
 
