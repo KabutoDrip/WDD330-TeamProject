@@ -4,7 +4,9 @@ import { setLocalStorage } from './utils.mjs';
 export async function productDetails(productID, selector) {
     // use findProductById to get the details for the current product. findProductById will return a promise! use await or .then() to process it
     var product = await findProductById(productID);
+    // check if the product exists
     if (product === undefined) {
+        // send a error message if the product does not exist
         let section = document.querySelector('.product-detail');
         section.innerHTML = '<h2>This product does not exist</h2>';
     } else {
