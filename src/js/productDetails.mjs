@@ -1,5 +1,5 @@
 import { findProductById } from './productData.mjs';
-import { getLocalStorage, setLocalStorage } from './utils.mjs';
+import { getLocalStorage, setLocalStorage, setListToLocalStorage } from './utils.mjs';
 
 export async function productDetails(productID, selector) {
     // use findProductById to get the details for the current product. findProductById will return a promise! use await or .then() to process it
@@ -19,19 +19,22 @@ export async function productDetails(productID, selector) {
 export function addProductToCart(product) {
     setLocalStorage('so-cart', product);
 }
-export function removeProductFromCart(productID){
+var scount = 0
+export function removeProductFromCart(e){
+    const productID = e.target.id;
     var ls = getLocalStorage('so-cart');
-    console.log(ls[0].Id);
     for (var i = 0; i < ls.length; i++) { 
-        //console.log(ls[i]);  
+        console.log(ls[i].Id);  
+        if (ls[i].Id == productID){
+            ls.splice(i - scount,1);
+            scount = scount++;
+            setListToLocalStorage('so-cart', ls);
+            window.location.reload();        
 
-        if (ls[i].Id == productID);
-        var newv = ls.splice(i,1);
-        console.log(newv);
-        break;
+            break;
+        }
     }
     
-    //setLocalStorage('so-cart', new);
 }
 
 export function productDetailsTemplate(product) {
