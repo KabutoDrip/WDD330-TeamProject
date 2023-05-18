@@ -1,5 +1,8 @@
+import { renderHeaderFooter } from './utils.mjs';
 import { getLocalStorage } from './utils.mjs';
 import { setSuperScript } from './utils.mjs';
+
+renderHeaderFooter();
 
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart');

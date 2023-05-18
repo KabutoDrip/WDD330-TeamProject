@@ -1,3 +1,16 @@
+import MainHeader from './components/MainHeader.svelte';
+import MainFooter from './components/MainFooter.svelte';
+
+//
+export function renderHeaderFooter() {
+  new MainHeader({
+    target: document.querySelector('#header'),
+  });
+  new MainFooter({
+    target: document.querySelector('#footer'),
+  })
+}
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -41,11 +54,11 @@ export function setSuperScript() {
 }
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
-  qs(selector).addEventListener("touchend", (event) => {
+  qs(selector).addEventListener('touchend', (event) => {
     event.preventDefault();
     callback();
   });
-  qs(selector).addEventListener("click", callback);
+  qs(selector).addEventListener('click', callback);
 }
 
 export function getParam(param) {
