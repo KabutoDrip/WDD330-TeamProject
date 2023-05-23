@@ -8,4 +8,3 @@ new ProductList({
 });
 
 renderHeaderFooter();
-setSuperScript();
