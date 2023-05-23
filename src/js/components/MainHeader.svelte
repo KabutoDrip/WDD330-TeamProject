@@ -1,3 +1,14 @@
+<script>
+    import { getSuperScript } from '../utils.mjs'
+    let num = getSuperScript();
+    let x = '37';
+    let y = '13';
+    if(num > 9) {
+        x = '20';
+        y = '10';
+    }
+</script>
+
 <div class='logo'>
 <img src='/images/noun_Tent_2517.svg' alt='tent image for logo'>
 <a href='/index.html'> Sleep<span class='highlight'>Outside</span></a>
@@ -13,7 +24,7 @@
         <path d='M24.3 68.4c2.9-0.1 6.4-0.9 8.3-1.4 0.1-0.8 0.3-2.8-0.7-3.5 -0.5-0.2-2.5-0.4-5.9-0.4 -4.9 0-8.6 0.4-9.5 0.7 -0.3 0.5-0.5 1.9-0.5 3.3C18 67.7 21.5 68.6 24.3 68.4z'/>
         <path d='M60.1 71.4v3.3h-5.2v-3.4c-1.7-0.3-3.3-0.7-4.6-1 -0.9 6.8-1.1 13.3-0.3 14.5 0.4 0.3 2.9 1.1 8 1.1h0c5 0 8.8-0.7 9.7-1.3 0.8-1.3 0.6-7.7-0.4-14.4C65.5 70.5 62.7 71.1 60.1 71.4z'/>
         <circle class='superscript_circle' cx='60' cy='-15' r='40'/>
-        <text class='superscript' x='37' y='13'></text>
+        <text class='superscript' x={x} y={y}>{num}</text>
     
     <!-- <text x='0' y='115' fill='#000000' font-size='5px' font-weight='bold' font-family=''Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif'>Created by Natalia Woodroffe</text>
     <text x='0' y='120' fill='#000000' font-size='5px' font-weight='bold' font-family=''Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif'>from the Noun Project</text> -->

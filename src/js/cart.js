@@ -1,6 +1,5 @@
 import { renderHeaderFooter } from './utils.mjs';
 import { getLocalStorage } from './utils.mjs';
-import { setSuperScript } from './utils.mjs';
 
 renderHeaderFooter();
 
@@ -45,4 +44,3 @@ function total(items){
 }
 
 renderCartContents();
-setSuperScript();
