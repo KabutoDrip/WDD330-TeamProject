@@ -14,6 +14,7 @@ export async function productDetails(productID, selector) {
         document.querySelector('#productName').innerHTML = product.Name;
         document.querySelector('#productNameWithoutBrand').innerHTML = product.NameWithoutBrand;
         document.querySelector('#productImage').setAttribute('src', product.Image);
+        document.querySelector('#productDiscount').innerHTML = `%${(product.FinalPrice / product.SuggestedRetailPrice).toFixed(2) * 100} Off`;
         document.querySelector('#productFinalPrice').innerHTML = product.FinalPrice;
         document.querySelector('#productDescriptionHtmlSimple').innerHTML = product.DescriptionHtmlSimple;
         document.querySelector('#addToCart').setAttribute('data-id', productID);
