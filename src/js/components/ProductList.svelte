@@ -6,8 +6,19 @@ export let category;
 // if you are looking at this thinking that's strange to just stop with a promise
 // you would be right.  This will make more sense in a bit...stay tuned.
 let promise = getData(category);
+let prettycategory;
+if (category == "sleeping-bags") {
+    prettycategory = "Sleeping Bags";
+}
+else {
+    prettycategory = category.charAt(0).toUpperCase() + category.slice(1);
+}
+
 </script>
-<p>Top products: {category}</p>
+<head>
+<title>Sleep Outside | {prettycategory}</title>
+</head>
+<p>Top products: {prettycategory}</p>
 
 {#await promise}
     Loading
