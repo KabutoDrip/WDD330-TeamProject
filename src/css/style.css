@@ -240,3 +240,14 @@ footer {
 .superscript_circle {
   fill: #e5aa72;
 }
+
+.product_list {
+  display: flex;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.icon {
+  width: 200px;
+
+}
