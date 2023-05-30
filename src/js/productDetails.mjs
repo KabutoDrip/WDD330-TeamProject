@@ -3,7 +3,7 @@ import { setLocalStorage } from './utils.mjs';
 
 export async function productDetails(productID, selector) {
     // use findProductById to get the details for the current product. findProductById will return a promise! use await or .then() to process it
-    var product = await findProductById(productID);
+    var product = await findProductById(productID, selector);
     // check if the product exists
     if (product === undefined) {
         // send a error message if the product does not exist
@@ -13,7 +13,7 @@ export async function productDetails(productID, selector) {
         // once we have the product details we can render out the HTML
         document.querySelector('#productName').innerHTML = product.Name;
         document.querySelector('#productNameWithoutBrand').innerHTML = product.NameWithoutBrand;
-        document.querySelector('#productImage').setAttribute('src', product.Image);
+        document.querySelector('#productImage').setAttribute('src', product.Images.PrimaryLarge);
         document.querySelector('#productDiscount').innerHTML = `%${(product.FinalPrice / product.SuggestedRetailPrice).toFixed(2) * 100} Off`;
         document.querySelector('#productFinalPrice').innerHTML = product.FinalPrice;
         document.querySelector('#productDescriptionHtmlSimple').innerHTML = product.DescriptionHtmlSimple;
