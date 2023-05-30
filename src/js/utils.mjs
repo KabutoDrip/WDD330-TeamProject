@@ -38,7 +38,7 @@ export function setLocalStorage(key, data) {
 // save list data to local storage
 export function setListToLocalStorage(key, list) {
   localStorage.setItem(key, JSON.stringify(list));
-  
+} 
 // get the superscript for the backpack icon
 export function getSuperScript() {
   const cartItems = getLocalStorage('so-cart');
