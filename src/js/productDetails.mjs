@@ -29,21 +29,22 @@ export function addProductToCart(product) {
     
     document.querySelector('.cart').addEventListener('animationend', (e) => {e.target.classList.remove('wiggle')});
 }
-var scount = 0
 export function removeProductFromCart(e){
-    const productID = e.target.id;
-    var ls = getLocalStorage('so-cart');
-    for (var i = 0; i < ls.length; i++) { 
-        //console.log(ls[i].Id);  
-        if (ls[i].Id == productID){
-            ls.splice(i - scount,1);
-            scount = scount++; //count that fixes a bug and only goes up when it hits something
-            setListToLocalStorage('so-cart', ls);
-            window.location.reload();        
-
-            break;
-        }
+    let productID = e.target.id;
+    if (e.target.nodeName != 'button'){
+        productID = e.target.closest('button').id;
     }
+    var ls = getLocalStorage('so-cart');
+    const index = ls.findIndex(item => item.Id == productID)
+    console.log(index)
+    
+        if (index >= 0){
+            console.log('problem');
+            ls.splice(index,1);
+            setListToLocalStorage('so-cart', ls);
+            //window.location.reload();        
+        }
+    
     
 }
 

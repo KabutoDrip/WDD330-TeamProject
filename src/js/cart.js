@@ -5,6 +5,16 @@ import { findProductById } from './productData.mjs';
 
 renderHeaderFooter();
 
+function init() {
+  document.querySelector('.product-list').addEventListener('click',(e) => {
+    removeProductFromCart(e);
+    renderCartContents();
+    console.log('cartproblem');
+  },true)
+  renderCartContents();
+
+}
+init()
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart');
   if(cartItems) {
@@ -12,7 +22,7 @@ function renderCartContents() {
     const totalcost = total(cartItems);
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
     document.querySelector('.total').innerHTML = `<p class="total">Total: ${totalcost}</p>`;
-    document.querySelector('.product-list').addEventListener('click',removeProductFromCart)
+    
 
   }
 }
@@ -50,5 +60,4 @@ function total(items){
   return sum;
 }
 
-renderCartContents();
 
