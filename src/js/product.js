@@ -6,7 +6,7 @@ import { setSuperScript } from './utils.mjs';
 renderHeaderFooter();
 
 const productId = getParam('product');
-productDetails(productId, '.product-detail');
+productDetails(productId);
 // add to cart button event handler
 async function addToCartHandler(e) {
   console.log(e);

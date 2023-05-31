@@ -16,7 +16,8 @@ export async function getData(category) {
 }
 // I believe this is where the promise error is taking place
 
-export async function findProductById(id) {
-  const products = await getData(id);
-  return products.find((item) => item.Id === id);
+export async function findProductById(id, category) {
+  const product = await fetch(baseURL + `product/${id}`);
+  const data = await convertToJson(product);
+  return data.Result;
 }
