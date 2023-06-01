@@ -2,17 +2,33 @@
     import { getSuperScript } from "../utils.mjs";
     import { getLocalStorage } from "../utils.mjs";
     import { total } from "../utils.mjs";
+    let first_name = "";
+    let last_name = "";
+    let city = "";
+    let state = "";
+    let zip = "";
+
+    let card_number = "";
+    let expiration = "";
+    let cvv = "";
+
     let tax = 0;
     let subtotal = total(getLocalStorage('so-cart'));
+    function handleSubmit(){
+      const newPost = {}
+    }
   </script>
-<form>
+
+<form on:submit|preventDefault={handleSubmit}>
     <h1>Review and Place your Order</h1>
     <section>
         <h2>Shipping</h2>
-        <input type="text" name="first_name" id="first_name" placeholder="First Name">
+        <input type="text" name="fname" id="first_name" placeholder="First Name">
         <label for="first_name"></label>
-        <input type="text" name="last_name" id="last_name" placeholder="Last Name">
+        <input type="text" name="lname" id="last_name" placeholder="Last Name">
         <label for="last_name"></label>
+        <input type="text" name="street" id="street" placeholder="Street">
+        <label for="street"></label>
         <input type="text" name="city" id="city" placeholder="City">
         <label for="city"></label>
         <input type="text" name="state" id="state" placeholder="State">
@@ -22,11 +38,11 @@
     </section>
     <section>
         <h2>Payment</h2>
-        <input type="text" name="card_number" id="card_number" placeholder="Card Number">
+        <input type="text" name="cardNumber" id="card_number" placeholder="Card Number">
         <label for="card_number"></label>
         <input type="text" name="expiration" id="expiration" placeholder="Expiration Date">
         <label for="expiration"></label>
-        <input type="text" name="cvv" id="cvv" placeholder="CVV">
+        <input type="text" name="code" id="cvv" placeholder="CVV">
         <label for="cvv"></label>
         
     </section>

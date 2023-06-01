@@ -1,4 +1,5 @@
 const baseURL = import.meta.env.VITE_SERVER_URL
+const checkoutPath = baseURL + 'checkout/';
 
 function convertToJson(res) {
   if (res.ok) {
@@ -22,3 +23,6 @@ export async function findProductById(id, category) {
   return data.Result;
 }
 
+export async function postCart (category) {
+  
+}
