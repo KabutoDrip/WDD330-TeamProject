@@ -1,4 +1,4 @@
-import { findProductById } from './productData.mjs';
+import { findProductById } from './externalServices.mjs';
 import { getLocalStorage, setLocalStorage, setListToLocalStorage } from './utils.mjs';
 
 export async function productDetails(productID, selector) {

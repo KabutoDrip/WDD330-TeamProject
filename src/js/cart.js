@@ -1,7 +1,8 @@
 import { renderHeaderFooter } from './utils.mjs';
 import { getLocalStorage } from './utils.mjs';
 import { removeProductFromCart } from './productDetails.mjs';
-import { findProductById } from './productData.mjs';
+import { total } from './utils.mjs';
+import { findProductById } from './externalServices.mjs';
 
 renderHeaderFooter();
 
@@ -57,11 +58,5 @@ function cartItemTemplate(item) {
 //   return t + currenItem.FinalPrice
 // }
 
-function total(items){
-  var sum = 0.0;
-  sum = items.reduce((t, currenItem)=>t + currenItem.FinalPrice,0)
-
-  return sum;
-}
 
 
