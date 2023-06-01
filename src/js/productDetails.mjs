@@ -43,11 +43,14 @@ export function removeProductFromCart(e){
             ls.splice(index,1);
             setListToLocalStorage('so-cart', ls);
             //window.location.reload();        
-        }
-    
+        } 
+}
+export function increaseProductQuantity(e){
+
+}
+export function decreaseProductQuantity(e){
     
 }
-
 export function productDetailsTemplate(product) {
     return `${product.Name}`;
 }
