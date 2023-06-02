@@ -2,13 +2,20 @@
   import { postCart } from "../externalServices.mjs";
     import { getSuperScript,getLocalStorage,formDataToJSON } from "../utils.mjs";
     import { total } from "../utils.mjs";
-    
+    let q = getSuperScript();
     let tax = 0;
     let orderTotal = 0;
     let shipping = 0;
     let list = getLocalStorage('so-cart');
     let subtotal = total(getLocalStorage('so-cart'));
+    function calculateItemSummary(){
+      tax = .06 * subtotal;
+      shipping = (q * 2) + 8;
+      orderTotal = subtotal + tax + shipping;
+      return tax, shipping, orderTotal
+    }
     async function handleSubmit(e){
+      //calculateItemSummary()
       const json = formDataToJSON(this);
       console.log(json)
       json.orderDate = new Date();
@@ -48,7 +55,7 @@
         <label for="city"></label>
         <input type="text" name="state" id="state" placeholder="State">
         <label for="state"></label>
-        <input type="text" name="zip" id="zip" placeholder="Zip Code">
+        <input type="text" name="zip" id="zip" placeholder="Zip Code" on:change={calculateItemSummary}>
         <label for="zip"></label>
     </section>
     <section>
@@ -65,7 +72,9 @@
         <legend>Order Summary</legend>
         <p>Item Subtotal({getSuperScript()})</p>
         <p>${subtotal}</p>
-        <p>${tax}</p>
+        <p>Shipping ${shipping.toFixed(2)}</p>
+        <p>Tax ${tax.toFixed(2)}</p>
+        <p>Order Total ${orderTotal.toFixed(2)}</p>
         <p></p>
       </fieldset>
     <button type="submit">Checkout</button>
