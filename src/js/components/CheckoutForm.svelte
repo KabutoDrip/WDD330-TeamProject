@@ -1,22 +1,37 @@
 <script>
-    import { getSuperScript } from "../utils.mjs";
-    import { getLocalStorage } from "../utils.mjs";
+  import { postCart } from "../externalServices.mjs";
+    import { getSuperScript,getLocalStorage,formDataToJSON } from "../utils.mjs";
     import { total } from "../utils.mjs";
-    let first_name = "";
-    let last_name = "";
-    let city = "";
-    let state = "";
-    let zip = "";
-
-    let card_number = "";
-    let expiration = "";
-    let cvv = "";
-
+    
     let tax = 0;
+    let orderTotal = 0;
+    let shipping = 0;
+    let list = getLocalStorage('so-cart');
     let subtotal = total(getLocalStorage('so-cart'));
-    function handleSubmit(){
-      const newPost = {}
+    async function handleSubmit(e){
+      const json = formDataToJSON(this);
+      console.log(json)
+      json.orderDate = new Date();
+      json.orderTotal = orderTotal;
+      json.tax = tax;
+      json.shipping = shipping;
+      json.items = packageItems(list);
+      postCart(json);
     }
+    function packageItems(items) {
+      const mappedCart = items.map((item) => {
+        //console.log(item);
+        return {
+          id: item.Id,
+          price: item.FinalPrice,
+          name: item.Name,
+          quantity: 1,
+        };
+      });
+      return mappedCart;
+    }
+    
+
   </script>
 
 <form on:submit|preventDefault={handleSubmit}>

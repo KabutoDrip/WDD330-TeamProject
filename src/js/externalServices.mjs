@@ -23,6 +23,14 @@ export async function findProductById(id, category) {
   return data.Result;
 }
 
-export async function postCart (category) {
-  
+export async function postCart (json) {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(json),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+
+};
+return (await fetch(checkoutPath, options)).json();
 }
