@@ -1,6 +1,8 @@
 <script>
 import { getData } from "../productData.mjs";
 import ProductSummary from "./ProductSummary.svelte";
+import Modal from "./Modal.svelte";
+import ModalContent from "./ModalContent.svelte";
 // this is how we make a prop in svelte
 export let category;
 // if you are looking at this thinking that's strange to just stop with a promise
@@ -12,6 +14,14 @@ if (category == "sleeping-bags") {
 }
 else {
     prettycategory = category.charAt(0).toUpperCase() + category.slice(1);
+}
+
+// initialise modal state and content
+let showModal = false;
+let modalContent;
+function toggleModal(component) {
+    modalContent = component;
+    showModal = !showModal;
 }
 
 </script>
@@ -26,7 +36,13 @@ else {
     <ul class="product-list">
         {#each products as product}
             {#if product.Id != "989CG" && product.Id != "880RT"}
-            <ProductSummary {product}/>
+                <ProductSummary {product}/>
+                <button on:click={() => (toggleModal(ModalContent))} on:keydown={() => (toggleModal(ModalContent))}>
+                    Quick Lookup
+                </button>
+                {#if showModal}
+                    <Modal on:click={toggleModal} {modalContent} />
+                {/if}
             {/if}
         {/each}
     </ul>
