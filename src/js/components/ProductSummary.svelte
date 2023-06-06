@@ -8,5 +8,6 @@
         <h3 class="card__brand">{product.Brand.Name}</h3>
         <h2 class="card__name">{product.Name}</h2>
         <p class="product-card__price">{product.ListPrice}</p>
+        <p class="product-card_discount">%{(product.FinalPrice / product.SuggestedRetailPrice).toFixed(2) * 100} Off</p>
     </a>
 </li>
