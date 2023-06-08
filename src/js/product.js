@@ -1,7 +1,7 @@
 import { renderHeaderFooter } from './utils.mjs';
 import { getParam } from './utils.mjs';
 import { productDetails, addProductToCart, } from './productDetails.mjs';
-import { findProductById } from './productData.mjs';
+import { findProductById } from './externalServices.mjs';
 import { setSuperScript } from './utils.mjs';
 renderHeaderFooter();
 

@@ -1,4 +1,4 @@
-import { findProductById } from './productData.mjs';
+import { findProductById } from './externalServices.mjs';
 import { getLocalStorage, setLocalStorage, setListToLocalStorage } from './utils.mjs';
 
 export async function productDetails(productID, selector) {
@@ -43,11 +43,14 @@ export function removeProductFromCart(e){
             ls.splice(index,1);
             setListToLocalStorage('so-cart', ls);
             //window.location.reload();        
-        }
-    
+        } 
+}
+export function increaseProductQuantity(e){
+
+}
+export function decreaseProductQuantity(e){
     
 }
-
 export function productDetailsTemplate(product) {
     return `${product.Name}`;
 }

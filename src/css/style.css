@@ -15,6 +15,7 @@
 }
 * {
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 .wiggle {
   animation: hithere 1s ease 1;
@@ -26,19 +27,28 @@
   70% { transform: rotate(0deg) scale(1.2); }
   100% { transform: scale(1); }
 }
+
 body {
   margin: 0;
+  padding: 0;
   font-family: var(--font-body);
   font-size: var(--font-base);
   color: var(--dark-grey);
+  width: 100vw;
+  height: 100vh;
+  background-color: #a4b8c4;
 }
+
 img {
   max-width: 100%;
 }
 header {
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
+  margin: 100px;
+  margin: auto;
 }
 .logo {
   line-height: 60px;
@@ -102,13 +112,16 @@ button {
   cursor: pointer;
 }
 .divider {
+  background-color: white;
   border-bottom: 2px solid var(--primary-color);
+  
 }
 /* End utility classes */
 
 /* Cart icon styles */
 .cart {
   padding-top: 1em;
+  padding-right: 20px;
   position: relative;
   text-align: center;
 }
@@ -133,6 +146,7 @@ button {
 .products {
   padding: 0.5em;
 }
+
 .product-list {
   display: flex;
   flex-flow: row wrap;
@@ -152,12 +166,18 @@ button {
   border: 1px solid var(--light-grey);
   max-width: 250px;
 }
+li{
+  width: 100%;
+}
 .product-card h2,
 .product-card h3,
 .product-card p {
   margin: 0.5em 0;
 }
-
+main{
+  width: 50vw;
+  margin: 5vw 5vw 25vw 25vw;
+}
 .card__brand {
   font-size: var(--small-font);
 }
@@ -216,10 +236,13 @@ button {
   color: red;
   background: none;
 }
-@media screen and (min-width: 500px) {
+@media screen and (max-width: 500px) {
   body {
-    max-width: 1080px;
-    margin: auto;
+    margin: 0;
+  }
+  main{
+    width: 100vw;
+    margin: 0;
   }
   .mission {
     font-size: 1.2em;
@@ -252,5 +275,17 @@ footer {
 
 .icon {
   width: 200px;
+
+}
+.item-qs{
+
+}
+.dec-quantity{
+
+}
+.quantity{
+
+}
+.inc-quantity{
 
 }

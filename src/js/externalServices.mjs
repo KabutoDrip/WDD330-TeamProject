@@ -1,4 +1,5 @@
 const baseURL = import.meta.env.VITE_SERVER_URL
+const checkoutPath = baseURL + 'checkout/';
 
 function convertToJson(res) {
   if (res.ok) {
@@ -8,7 +9,7 @@ function convertToJson(res) {
   }
 }
 
-export async function getData(category) {
+export async function getProductsByCategory(category) {
   const response = await fetch(baseURL + `products/search/${category}`);
   const data = await convertToJson(response);
   console.log(data.Result);
@@ -20,4 +21,16 @@ export async function findProductById(id, category) {
   const product = await fetch(baseURL + `product/${id}`);
   const data = await convertToJson(product);
   return data.Result;
+}
+
+export async function postCart (json) {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(json),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+
+};
+return (await fetch(checkoutPath, options)).json();
 }

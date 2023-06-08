@@ -73,3 +73,22 @@ export function getParam(param) {
   // console.log(`Product: ${product}`);
   return product;
 }
+
+export function total(items){
+  var sum = 0.0;
+  sum = items.reduce((t, currenItem)=>t + currenItem.FinalPrice,0)
+
+  return sum;
+}
+
+// takes a form element and returns an object where the key is the "name" of the form input.
+export function formDataToJSON(formElement) {
+  const formData = new FormData(formElement),
+    convertedJSON = {};
+
+  formData.forEach(function (value, key) {
+    convertedJSON[key] = value;
+  });
+
+  return convertedJSON;
+}
