@@ -1,10 +1,13 @@
 <script>
 	export let modalContent;
+
+	export let productId;
+    console.log("modal" + productId);
 </script>
 
-<div on:click|self class='modal'>
+<div on:click|self on:keydown|self class='modal'>
 	<div class='content'>
-		<svelte:component on:click this={modalContent}/>
+		<svelte:component on:click this={modalContent} {productId}/>
 	</div>
 </div>
 
@@ -14,8 +17,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 100%;
+		/* width: 100%; */
+		/* height: 100%; */
 		display: flex;
 		justify-content: center;
 		align-items: center;
