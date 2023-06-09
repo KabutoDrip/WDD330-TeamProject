@@ -3,16 +3,25 @@ import { getParam } from './utils.mjs';
 import { productDetails, addProductToCart, } from './productDetails.mjs';
 import { findProductById } from './externalServices.mjs';
 import { setSuperScript } from './utils.mjs';
+import Alert from "./components/Alert.svelte";
+
+
+
 renderHeaderFooter();
 
 const productId = getParam('product');
 productDetails(productId);
 // add to cart button event handler
 async function addToCartHandler(e) {
-  console.log(e);
+  // console.log(e);
   const product = await findProductById(e.target.dataset.id);
   addProductToCart(product);
   setSuperScript();
+
+  new Alert({
+    target: document.querySelector(".cartAlert"),
+    props: {messages: ["Added to cart"]},
+  });
 }
 
 

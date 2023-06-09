@@ -1,29 +1,49 @@
 <script>
-  import { postCart } from "../externalServices.mjs";
+    import { postCart } from "../externalServices.mjs";
     import { getSuperScript,getLocalStorage,formDataToJSON } from "../utils.mjs";
-    import { total } from "../utils.mjs";
+    import { total, removeAllAlerts } from "../utils.mjs";
+    import Alert from "./Alert.svelte";
+
     let q = getSuperScript();
     let tax = 0;
     let orderTotal = 0;
     let shipping = 0;
     let list = getLocalStorage('so-cart');
     let subtotal = total(getLocalStorage('so-cart'));
+    let messageObject = {};
+    let messages = [];
+
     function calculateItemSummary(){
       tax = .06 * subtotal;
       shipping = (q * 2) + 8;
       orderTotal = subtotal + tax + shipping;
       return tax, shipping, orderTotal
     }
-    async function handleSubmit(e){
+    async function handleSubmit(){
       //calculateItemSummary()
       const json = formDataToJSON(this);
-      console.log(json)
       json.orderDate = new Date();
       json.orderTotal = orderTotal;
       json.tax = tax;
       json.shipping = shipping;
       json.items = packageItems(list);
-      postCart(json);
+      try {
+        const res = await postCart(json);
+        messages = ["Good job you did it :) :) :)"]
+        console.log(res);
+        console.log("finished")
+        localStorage.clear();
+
+      } catch(err) {
+        // console.log("in catch :)")
+        removeAllAlerts();
+        messageObject = err.message;
+        messages = Object.values(messageObject);
+        // console.log(messages);
+        // console.log(`messages in handleSubmit: ${JSON.stringify(messageObject)}`)
+        // console.log(typeof messageObject)
+
+      }
     }
     function packageItems(items) {
       const mappedCart = items.map((item) => {
@@ -37,10 +57,11 @@
       });
       return mappedCart;
     }
-    
+</script>
 
-  </script>
-
+{#if messages.length > 0}
+  <Alert {messages}/>
+{/if}
 <form on:submit|preventDefault={handleSubmit}>
     <h1>Review and Place your Order</h1>
     <section>

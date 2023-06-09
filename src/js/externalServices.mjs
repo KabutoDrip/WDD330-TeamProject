@@ -1,11 +1,15 @@
 const baseURL = import.meta.env.VITE_SERVER_URL
 const checkoutPath = baseURL + 'checkout/';
 
-function convertToJson(res) {
+async function convertToJson(res) {
+  let request = await res.json();
+  // console.log(`request: ${request}`);
+  // console.log(`res: ${res}`);
+  // console.log(JSON.stringify(request));
   if (res.ok) {
-    return res.json();
+    return request;
   } else {
-    throw new Error('Bad Response');
+    throw { name: 'servicesError', message: request };
   }
 }
 
@@ -30,7 +34,6 @@ export async function postCart (json) {
     headers: {
       'Content-Type': 'application/json'
     }
-
 };
-return (await fetch(checkoutPath, options)).json();
+return (await fetch(checkoutPath, options).then(convertToJson));
 }

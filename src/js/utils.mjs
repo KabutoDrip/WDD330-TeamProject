@@ -92,3 +92,12 @@ export function formDataToJSON(formElement) {
 
   return convertedJSON;
 }
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => alert.remove());
+}
+
+export function alertMessage(message, scroll=true) {
+  
+}
