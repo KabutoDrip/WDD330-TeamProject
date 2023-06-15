@@ -37,6 +37,7 @@
     "last 3 safari versions"
   ],
   "dependencies": {
+    "jwt-decode": "^3.1.2",
     "package-name": "^0.1.0"
   },
   "type": "module"
