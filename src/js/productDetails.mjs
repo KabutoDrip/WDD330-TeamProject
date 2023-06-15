@@ -46,10 +46,15 @@ export function removeProductFromCart(e){
         } 
 }
 export function increaseProductQuantity(e){
+    console.log(e.target.CartQuantity)
+    e.target.CartQuantity = e.target.CartQuantity + 1;
+    console.log(e.target.CartQuantity)
 
 }
 export function decreaseProductQuantity(e){
-    
+    console.log(e.target.CartQuantity)
+    e.target.CartQuantity = e.target.CartQuantity - 1;
+    console.log(e.target.CartQuantity)
 }
 export function productDetailsTemplate(product) {
     return `${product.Name}`;
